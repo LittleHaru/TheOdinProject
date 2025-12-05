@@ -1,8 +1,2 @@
-# odin-recipes
-
-## this is where i practice HTML
-- headers
-- divs
-- href
-- img src
-- git workflow processes
+#The Odin Project
+This Repo will be my library throughout learning TOP
