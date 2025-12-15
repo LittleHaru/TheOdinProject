@@ -1,0 +1,19 @@
+.title{
+    background-color: bisque;
+    text-align: center;
+    color:brown
+}
+
+.list{
+    background-color: bisque;
+    padding: auto;
+    margin:0 auto;
+}
+
+li{
+    font-size: large;
+    margin: 15px;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+}
