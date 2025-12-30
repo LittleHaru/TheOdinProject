@@ -130,10 +130,12 @@ ul {
     height: 100px;
     width: 100px;
     border-radius: 10px;
-    justify-self: center;
 }
 
 .info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 200px;
 }
 
