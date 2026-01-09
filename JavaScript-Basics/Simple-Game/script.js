@@ -22,24 +22,19 @@ function playRound(humanChoice,computerChoice) {
     if (humanChoice == computerChoice){
         tie++
         return "You Guys Tied!"
-    } else if (humanChoice == "paper" && computerChoice == "scissor") {
-        computerScore++
-        return "You Lost To A Computer Lmao"
-    } else if (humanChoice == "paper" && computerChoice == "rock") {
-        humanScore++
-        return "You Won Yay with " + humanChoice
-    } else if (humanChoice == "scissor" && computerChoice == "rock") {
-        computerScore++
-        return "You Lost To A Computer Lmao"
-    } else if (humanChoice == "scissor" && computerChoice == "paper") {
-        humanScore++
-        return "You Won YAY " + humanChoice
-    } else if (humanChoice == "rock" && computerChoice == "paper") {
-        computerScore++
-        return "You Lost To A Computer Lmao"
-    } else if (humanChoice == "rock" && computerChoice == "scissor") {
-        humanScore++
-        return "You Won YAY " + humanChoice
+    }
+    const outcomes = {
+        rock: "scissor",
+        paper: "rock",
+        scissor: "paper"
+    }
+
+    if (outcomes[humanChoice] === computerChoice) {
+        humanScore++;
+        return "You Won!"
+    } else {
+        computerScore++;
+        return "You Lost to a Computer Lmao!"
     }
 }
 
