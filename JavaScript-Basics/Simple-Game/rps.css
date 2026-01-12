@@ -1,0 +1,22 @@
+body {
+    margin:0;
+    padding:0;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+.score {
+    margin-bottom: 10px;
+}
+
+.container {
+    justify-content: center;
+    display:flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
+    height: 100px;
+    width: 100px
+}
