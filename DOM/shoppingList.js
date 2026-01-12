@@ -19,7 +19,11 @@ button.addEventListener("click", (event) => {
     list.append(listItem);
 
     listBtn.addEventListener("click", () => {
-        list.removeChild(listItem)
+        if (confirm("Do you Want to Delete this?")) {
+            list.removeChild(listItem)
+        } else {
+            return
+        }
     });
     input.focus()
 });
