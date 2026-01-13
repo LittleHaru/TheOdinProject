@@ -16,13 +16,10 @@ createButton.addEventListener("click", () => {
 
 rainbowButton.addEventListener("click", () => {
     currentState = (currentState === 0) ? 1 : 0;
-    if (currentState === 1) {
-        rainbowButton.style.backgroundColor = "pink"
-    } else {
-        rainbowButton.style.backgroundColor = "lightgrey"
-    }
+    rainbowButton.classList.toggle("rainbow-active")
 })
 
+// Event Bubbling
 clearButton.addEventListener("click", () => {
     const allDiv = document.querySelectorAll(".square")
     allDiv.forEach((e) => {
@@ -35,6 +32,7 @@ function getRandomNumber() {
     return Math.floor(Math.random() * 256)
 }
 
+// Make Grid (establish columns then populate with divs)
 function createGrid(size) {
     container.innerHTML = ""
     for (let i = 0; i < size; i++) {

@@ -10,6 +10,7 @@ body {
 }
 
 button {
+    background-color: bisque;
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 10px;
@@ -17,6 +18,10 @@ button {
 
 button:hover {
     background-color: lightgray;
+}
+
+.rainbow-active{
+    background-color: pink;
 }
 
 .container {
