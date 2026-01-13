@@ -1,7 +1,8 @@
 const container = document.querySelector(".container");
-const button = document.querySelector(".create")
+const createButton = document.querySelector(".create");
+const clearButton = document.querySelector(".clear");
 
-button.addEventListener("click", () => {
+createButton.addEventListener("click", () => {
     size = prompt("Enter The Size of Grid Wanted (Max 100)")
     if (size > 100) {
         alert("Max Size Reached")
@@ -9,6 +10,14 @@ button.addEventListener("click", () => {
     } else {
         createGrid(size)
     }
+})
+
+clearButton.addEventListener("click", () => {
+    console.log("click")
+    const allDiv = document.querySelectorAll(".square")
+    allDiv.forEach((e) => {
+        e.style.backgroundColor = "white"
+    })
 })
 
 function createGrid(size) {
