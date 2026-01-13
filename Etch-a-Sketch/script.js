@@ -1,6 +1,8 @@
 const container = document.querySelector(".container");
 const createButton = document.querySelector(".create");
 const clearButton = document.querySelector(".clear");
+const rainbowButton = document.querySelector(".rainbow");
+var currentState = 0 
 
 createButton.addEventListener("click", () => {
     size = prompt("Enter The Size of Grid Wanted (Max 100)")
@@ -12,6 +14,10 @@ createButton.addEventListener("click", () => {
     }
 })
 
+rainbowButton.addEventListener("click", () => {
+    currentState = (currentState === 0) ? 1 : 0;
+})
+
 clearButton.addEventListener("click", () => {
     console.log("click")
     const allDiv = document.querySelectorAll(".square")
@@ -19,6 +25,10 @@ clearButton.addEventListener("click", () => {
         e.style.backgroundColor = "white"
     })
 })
+
+function getRandomNumber() {
+    return Math.floor(Math.random() * 256)
+}
 
 function createGrid(size) {
     container.innerHTML = ""
@@ -35,8 +45,16 @@ function createGrid(size) {
 }
 
 container.addEventListener("mouseover", (e) => {
-    if (e.target.classList.contains("square")) {
+    if (currentState === 0) {
+        if (e.target.classList.contains("square")) {
         e.target.style.backgroundColor = "grey"
-    }
+    }} else {
+        let r = getRandomNumber()
+        let g = getRandomNumber()
+        let b = getRandomNumber()
+        if (e.target.classList.contains("square")) {
+        e.target.style.backgroundColor = `rgb(${r},${g},${b})`
+    }}
 })
+
 
