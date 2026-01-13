@@ -28,27 +28,15 @@ function playRound(humanChoice,computerChoice) {
     }
 }
 
-// function playGame() {
-//     n = 0
-//     while (n != 5) {
-//         const humanChoice = getHumanChoice()
-//         const computerChoice = getComputerChoice()
-//         let play = playRound(humanChoice,computerChoice)
-//         console.log(play)
-//         n++
-//     } return "Game Over: " + humanScore + " : " + computerScore + " Tied Score: " + tie
-// }
-
 const buttons = document.querySelectorAll("button")
 const board = document.querySelector("#score")
 const outcome = document.createElement("div")
 const score = document.createElement("div")
 board.appendChild(score)
+score.textContent = "0 vs 0"
 board.appendChild(outcome)
-
-function alertGame() {
-    alert("Game Over")
-}
+outcome.textContent = "Click A Button To Start The Game!"
+outcome.style.marginBottom = "10px"
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -57,6 +45,11 @@ buttons.forEach((button) => {
         result = playRound(humanChoice,computerChoice)
         outcome.textContent = result
         score.textContent = humanScore + " VS " + computerScore + " Tie: " + tie
+        if (humanScore === 5) {
+            alert("Game is Over, You Win!")
+        } else if (computerScore === 5) {
+            alert("Game is Over, Computer Wins!")
+        }
     })
 })
 
