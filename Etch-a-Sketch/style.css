@@ -5,7 +5,18 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+button {
+    margin-bottom: 10px;
+}
+
 .container {
     display:flex;
     justify-content: center;
+}
+
+.container>div {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    flex: 1 0 auto;
 }
