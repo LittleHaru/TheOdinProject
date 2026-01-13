@@ -17,16 +17,16 @@ function createGrid(size) {
         const column = document.createElement("div");
         column.classList.add("column")
         for (let j = 0; j < size; j++) {
-            const row = document.createElement("div");
-            row.classList.add("row")
-            column.appendChild(row)
+            const square = document.createElement("div");
+            square.classList.add("square")
+            column.appendChild(square)
         }
         container.append(column)
     }
 }
 
 container.addEventListener("mouseover", (e) => {
-    if (e.target.classList.contains("row")) {
+    if (e.target.classList.contains("square")) {
         e.target.style.backgroundColor = "grey"
     }
 })

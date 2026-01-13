@@ -32,7 +32,7 @@ button:hover {
     flex: 1;
 }
 
-.row {
+.square {
     flex: 1;
     border: 1px solid black;
     box-sizing: border-box;
