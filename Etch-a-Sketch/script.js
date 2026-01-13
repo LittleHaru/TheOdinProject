@@ -19,10 +19,10 @@ rainbowButton.addEventListener("click", () => {
 })
 
 clearButton.addEventListener("click", () => {
-    console.log("click")
     const allDiv = document.querySelectorAll(".square")
     allDiv.forEach((e) => {
-        e.style.backgroundColor = "white"
+        e.style.backgroundColor = "white";
+        e.style.opacity = 0.1;
     })
 })
 
@@ -55,6 +55,16 @@ container.addEventListener("mouseover", (e) => {
         if (e.target.classList.contains("square")) {
         e.target.style.backgroundColor = `rgb(${r},${g},${b})`
     }}
+})
+
+container.addEventListener("mouseover", (e) => {
+    let currentOpacity = e.target.style.opacity;
+    let opacityNum = currentOpacity ? parseFloat(currentOpacity) : 0;
+    if (e.target.classList.contains("square")) {
+        if (opacityNum < 1) {
+            e.target.style.opacity = opacityNum + 0.1
+        }
+    }
 })
 
 
