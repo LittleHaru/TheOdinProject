@@ -16,6 +16,11 @@ createButton.addEventListener("click", () => {
 
 rainbowButton.addEventListener("click", () => {
     currentState = (currentState === 0) ? 1 : 0;
+    if (currentState === 1) {
+        rainbowButton.style.backgroundColor = "pink"
+    } else {
+        rainbowButton.style.backgroundColor = "lightgrey"
+    }
 })
 
 clearButton.addEventListener("click", () => {
