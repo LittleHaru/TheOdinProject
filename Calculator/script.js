@@ -2,15 +2,19 @@ const displayArea = document.querySelector(".screen")
 const numberButton = document.querySelectorAll(".number")
 const opButton = document.querySelectorAll(".op")
 const equalButton = document.querySelector(".equal")
-let numbers = []
+const clearButton = document.querySelector(".clear")
+let numbers = ""
 let concatNumbers = []
 let operator
+let display = ""
 
 numberButton.forEach(button => {
     button.addEventListener("click", (e) => {
         const buttonValue = e.target.value;
-        numbers.push(buttonValue)
+        display += buttonValue
+        numbers += buttonValue
         console.log(numbers)
+        displayArea.textContent = display 
     })
 });
 
@@ -18,38 +22,46 @@ opButton.forEach(button => {
     button.addEventListener("click", (e) => {
         const buttonValue = e.target.value;
         operator = buttonValue
-        number = Number(numbers.join(""))
-        numbers.splice(0, numbers.length)
-        concatNumbers.push(number)
+        concatNumbers.push(Number(numbers))
+        numbers = ""
         console.log(concatNumbers)
+        display += operator
+        displayArea.textContent = display 
     })
 })
 
-const add = function(numbers) {
-    const sum = numbers.reduce((total, current) => {
+clearButton.addEventListener("click", () => {
+    numbers = ""
+    concatNumbers.splice(0 , concatNumbers.length)
+    display = ""
+    displayArea.textContent = display
+})
+
+const add = function(arr) {
+    const sum = arr.reduce((total, current) => {
         return total + current
-    }, 0);
+    });
     return sum
 }
 
-const subtract = function(numbers) {
-    const sum = numbers.reduce((total, current) => {
+const subtract = function(arr) {
+    const sum = arr.reduce((total, current) => {
         return total - current
-    }, 0);
+    });
     return sum
 }
 
-const multiply = function(numbers) {
-    const sum = numbers.reduce((total, current) => {
+const multiply = function(arr) {
+    const sum = arr.reduce((total, current) => {
         return total * current
-    }, 0);
+    });
     return sum
 }
 
-const divide = function(numbers) {
-    const sum = numbers.reduce((total, current) => {
+const divide = function(arr) {
+    const sum = arr.reduce((total, current) => {
         return total / current
-    }, 0);
+    });
     return sum
 }
 
@@ -62,16 +74,23 @@ const operate = function(operator, nums) {
             let minus = subtract(nums)
             return minus
         case '*':
-            let multiple = multiple(nums)
+            let multiple = multiply(nums)
             return multiple
         case '/':
             let division = divide(nums)
             return division
+        case ' ':
+            return nums
     }
 }
 
 equalButton.addEventListener("click", () => {
+    concatNumbers.push(Number(numbers))
+    numbers = ""
+    console.log(concatNumbers)
     let total = operate(operator,concatNumbers)
     concatNumbers.splice(0,concatNumbers.length)
+    displayArea.textContent = total
+    display = ""
     console.log(total)
 })
