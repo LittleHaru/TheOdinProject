@@ -1,15 +1,16 @@
 const displayArea = document.querySelector(".screen")
 const numberButton = document.querySelectorAll(".number")
 const opButton = document.querySelectorAll(".op")
+const equalButton = document.querySelector(".equal")
 let numbers = []
 let concatNumbers = []
-let number1
 let operator
 
 numberButton.forEach(button => {
     button.addEventListener("click", (e) => {
         const buttonValue = e.target.value;
-        arr.push(buttonValue)
+        numbers.push(buttonValue)
+        console.log(numbers)
     })
 });
 
@@ -17,9 +18,10 @@ opButton.forEach(button => {
     button.addEventListener("click", (e) => {
         const buttonValue = e.target.value;
         operator = buttonValue
-        number = Number(arr.join(""))
-        numbers.splice(0, arr.length)
+        number = Number(numbers.join(""))
+        numbers.splice(0, numbers.length)
         concatNumbers.push(number)
+        console.log(concatNumbers)
     })
 })
 
@@ -51,7 +53,7 @@ const divide = function(numbers) {
     return sum
 }
 
-const operate = function(operator, ...nums) {
+const operate = function(operator, nums) {
     switch(operator) {
         case '+':
             let addition = add(nums)
@@ -59,7 +61,7 @@ const operate = function(operator, ...nums) {
         case '-':
             let minus = subtract(nums)
             return minus
-        case 'x':
+        case '*':
             let multiple = multiple(nums)
             return multiple
         case '/':
@@ -68,5 +70,8 @@ const operate = function(operator, ...nums) {
     }
 }
 
-// need to figure out how to take value operand
-// pass numbers thur the operand
+equalButton.addEventListener("click", () => {
+    let total = operate(operator,concatNumbers)
+    concatNumbers.splice(0,concatNumbers.length)
+    console.log(total)
+})
