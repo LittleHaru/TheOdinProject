@@ -32,7 +32,7 @@ opButton.forEach(button => {
             concatNumbers.splice(0 , concatNumbers.length)
             concatNumbers.push(total)
             display = ""
-            display += total
+            display += total.toFixed(1)
             display += operator
             displayArea.textContent = display 
         } else {
@@ -83,6 +83,7 @@ const divide = function(arr) {
         if (current === 0) {
             alert("Cannot Divide By Zero Dipshit")
             clearUP()
+            return 0
         } else {
             return total / current
         }
@@ -117,7 +118,14 @@ equalButton.addEventListener("click", () => {
         numbers = ""
         let total = operate(operator , concatNumbers)
         concatNumbers.splice(0 , concatNumbers.length)
-        displayArea.textContent = total
+        display = String(total.toFixed(1))
+        displayArea.textContent = display
         display = ""
     }
 })
+
+
+//to do next
+//add keyboard support
+//add decimal button and lock to only 1 decimal point
+//add backspace
