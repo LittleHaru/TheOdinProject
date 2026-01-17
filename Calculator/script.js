@@ -13,29 +13,49 @@ numberButton.forEach(button => {
         const buttonValue = e.target.value;
         display += buttonValue
         numbers += buttonValue
-        console.log(numbers)
         displayArea.textContent = display 
     })
 });
 
 opButton.forEach(button => {
     button.addEventListener("click", (e) => {
-        const buttonValue = e.target.value;
-        operator = buttonValue
-        concatNumbers.push(Number(numbers))
-        numbers = ""
-        console.log(concatNumbers)
-        display += operator
-        displayArea.textContent = display 
+        if (concatNumbers.length > 0) {
+
+            concatNumbers.push(Number(numbers))
+            numbers = ""
+
+            let total = operate(operator, concatNumbers)
+
+            const buttonValue = e.target.value;
+            operator = buttonValue
+
+            concatNumbers.splice(0 , concatNumbers.length)
+            concatNumbers.push(total)
+            display = ""
+            display += total
+            display += operator
+            displayArea.textContent = display 
+        } else {
+            const buttonValue = e.target.value;
+            operator = buttonValue
+
+            concatNumbers.push(Number(numbers))
+            numbers = ""
+
+            display += operator
+            displayArea.textContent = display
+        }
     })
 })
 
-clearButton.addEventListener("click", () => {
+function clearUP() {
     numbers = ""
     concatNumbers.splice(0 , concatNumbers.length)
     display = ""
     displayArea.textContent = display
-})
+}
+
+clearButton.addEventListener("click", () => clearUP())
 
 const add = function(arr) {
     const sum = arr.reduce((total, current) => {
@@ -60,37 +80,45 @@ const multiply = function(arr) {
 
 const divide = function(arr) {
     const sum = arr.reduce((total, current) => {
-        return total / current
+        if (current === 0) {
+            alert("Cannot Divide By Zero Dipshit")
+            clearUP()
+        } else {
+            return total / current
+        }
     });
     return sum
 }
 
 const operate = function(operator, nums) {
     switch(operator) {
-        case '+':
-            let addition = add(nums)
-            return addition
-        case '-':
-            let minus = subtract(nums)
-            return minus
-        case '*':
-            let multiple = multiply(nums)
-            return multiple
-        case '/':
-            let division = divide(nums)
-            return division
-        case ' ':
-            return nums
+    case '+':
+        let addition = add(nums)
+        return addition
+    case '-':
+        let minus = subtract(nums)
+        return minus
+    case '*':
+        let multiple = multiply(nums)
+        return multiple
+    case '/':
+        let division = divide(nums)
+        return division
+    case ' ':
+        return nums
     }
 }
 
 equalButton.addEventListener("click", () => {
-    concatNumbers.push(Number(numbers))
-    numbers = ""
-    console.log(concatNumbers)
-    let total = operate(operator,concatNumbers)
-    concatNumbers.splice(0,concatNumbers.length)
-    displayArea.textContent = total
-    display = ""
-    console.log(total)
+    if (numbers === "" || concatNumbers.length === 0) {
+        return
+    } else {
+        concatNumbers.push(Number(numbers))
+        numbers = ""
+        let total = operate(operator , concatNumbers)
+        concatNumbers.splice(0 , concatNumbers.length)
+        concatNumbers.push(total)
+        displayArea.textContent = total
+        display = ""
+    }
 })
