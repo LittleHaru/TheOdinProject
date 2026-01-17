@@ -29,11 +29,9 @@ opButton.forEach(button => {
                 const buttonValue = e.target.value;
                 operator = buttonValue
 
-                concatNumbers.splice(0 , concatNumbers.length)
-                concatNumbers.push(total)
-                display = ""
-                display += total.toFixed(1)
-                display += operator
+                concatNumbers = [total]
+                
+                display = total.toFixed(1) + operator
                 displayArea.textContent = display 
             } else {
                 const buttonValue = e.target.value;
