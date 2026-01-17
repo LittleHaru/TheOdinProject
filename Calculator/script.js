@@ -117,7 +117,6 @@ equalButton.addEventListener("click", () => {
         numbers = ""
         let total = operate(operator , concatNumbers)
         concatNumbers.splice(0 , concatNumbers.length)
-        concatNumbers.push(total)
         displayArea.textContent = total
         display = ""
     }
