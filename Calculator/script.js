@@ -20,30 +20,43 @@ numberButton.forEach(button => {
 opButton.forEach(button => {
     button.addEventListener("click", (e) => {
         if (concatNumbers.length > 0) {
+            if (numbers !== "") {
+                concatNumbers.push(Number(numbers))
+                numbers = ""
 
-            concatNumbers.push(Number(numbers))
-            numbers = ""
+                let total = operate(operator, concatNumbers)
 
-            let total = operate(operator, concatNumbers)
+                const buttonValue = e.target.value;
+                operator = buttonValue
 
-            const buttonValue = e.target.value;
-            operator = buttonValue
-
-            concatNumbers.splice(0 , concatNumbers.length)
-            concatNumbers.push(total)
-            display = ""
-            display += total.toFixed(1)
-            display += operator
-            displayArea.textContent = display 
+                concatNumbers.splice(0 , concatNumbers.length)
+                concatNumbers.push(total)
+                display = ""
+                display += total.toFixed(1)
+                display += operator
+                displayArea.textContent = display 
+            } else {
+                const buttonValue = e.target.value;
+                operator = buttonValue
+                display = display.slice(0,-1) + operator
+                displayArea.textContent = display 
+            }
         } else {
-            const buttonValue = e.target.value;
-            operator = buttonValue
+            if (numbers === "") {
+                const buttonValue = e.target.value;
+                operator = buttonValue
+                display = display.slice(0,-1) + operator
+                displayArea.textContent = display 
+            } else {
+                const buttonValue = e.target.value;
+                operator = buttonValue
 
-            concatNumbers.push(Number(numbers))
-            numbers = ""
+                concatNumbers.push(Number(numbers))
+                numbers = ""
 
-            display += operator
-            displayArea.textContent = display
+                display += operator
+                displayArea.textContent = display
+            }
         }
     })
 })
