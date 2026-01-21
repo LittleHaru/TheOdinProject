@@ -71,6 +71,10 @@ button:hover{
     flex-wrap: wrap;
 }
 
+.left > button {
+    font-size: 30px;
+}
+
 .number {
     width: 100px;
     height: 100px
