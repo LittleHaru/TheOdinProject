@@ -1,4 +1,5 @@
-const displayArea = document.querySelector(".screen")
+const displayArea = document.querySelector(".screen-top")
+const displayResult = document.querySelector(".screen-btm")
 const numberButton = document.querySelectorAll(".number")
 const opButton = document.querySelectorAll(".op")
 const equalButton = document.querySelector(".equal")
@@ -64,6 +65,7 @@ function clearUP() {
     concatNumbers.splice(0 , concatNumbers.length)
     display = ""
     displayArea.textContent = display
+    displayResult.textContent = 0
 }
 
 clearButton.addEventListener("click", () => clearUP())
@@ -130,7 +132,7 @@ equalButton.addEventListener("click", () => {
         let total = operate(operator , concatNumbers)
         concatNumbers.splice(0 , concatNumbers.length)
         display = String(total.toFixed(1))
-        displayArea.textContent = display
+        displayResult.textContent = display
         display = ""
     }
 })
