@@ -14,47 +14,43 @@ numberButton.forEach(button => {
         const buttonValue = e.target.value;
         display += buttonValue
         numbers += buttonValue
-        displayArea.textContent = display 
+        updateDisplay(display)
     })
 });
 
 opButton.forEach(button => {
     button.addEventListener("click", (e) => {
+        const buttonValue = e.target.value;
         if (concatNumbers.length > 0) {
             if (numbers !== "") {
                 concatNumbers.push(Number(numbers))
                 numbers = ""
 
                 let total = operate(operator, concatNumbers)
-
-                const buttonValue = e.target.value;
                 operator = buttonValue
 
                 concatNumbers = [total]
                 
-                display = total.toFixed(1) + operator
-                displayArea.textContent = display 
+                display = total.toFixed(1) + " " + operator + " "
+                updateDisplay(display)
             } else {
-                const buttonValue = e.target.value;
                 operator = buttonValue
-                display = display.slice(0,-1) + operator
-                displayArea.textContent = display 
+                display = display.slice(0,-3) + " " + operator + " "
+                updateDisplay(display)
             }
         } else {
             if (numbers === "") {
-                const buttonValue = e.target.value;
                 operator = buttonValue
-                display = display.slice(0,-1) + operator
-                displayArea.textContent = display 
+                display = display.slice(0,-3) + " " + operator + " "
+                updateDisplay(display)
             } else {
-                const buttonValue = e.target.value;
                 operator = buttonValue
 
                 concatNumbers.push(Number(numbers))
                 numbers = ""
 
-                display += operator
-                displayArea.textContent = display
+                display += " " + operator + " "
+                updateDisplay(display)
             }
         }
     })
@@ -137,8 +133,10 @@ equalButton.addEventListener("click", () => {
     }
 })
 
+function updateDisplay(content) {
+    displayArea.textContent = content;
+};
 
 //to do next
 //add keyboard support
-//add decimal button and lock to only 1 decimal point
 //add backspace
